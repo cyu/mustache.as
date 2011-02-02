@@ -1,4 +1,4 @@
-﻿package {
+package {
 	
 	public class Mustache  {
 
@@ -40,7 +40,7 @@
 			
 		private function render( template:String, context:Object, partials:Object = null, in_recursion:Boolean = false):String
 		{
-			trace("render() " + template);
+			/*trace("render() " + template);*/
 			var ret:String;
 			
 			buffer = [];
@@ -69,7 +69,7 @@
 			if(in_recursion)
 			{
 				ret = render_tags( html, context, partials, in_recursion );
-				trace("render_tags: " + ret);
+				/*trace("render_tags: " + ret);*/
 				return ret;
 			}
 			
@@ -171,7 +171,7 @@
 			var lines:Array = template.split("\n");
 			for(var i:int = 0; i < lines.length; i++) {
 				lines[i] = String(lines[i]).replace(regex, function(match:String, operator:String, name:String, pos:int, original:String):String {
-					trace(match + ":" + operator + ":" + name);
+					/*trace(match + ":" + operator + ":" + name);*/
 					switch(operator){
 						case "!":
 							return "";
@@ -252,38 +252,38 @@
 		}
 		
 		private function merge(a:*, b:*):Object{
-			trace("merge()");
+			/*trace("merge()");*/
 			var _new:Object = {};
 			var name:String;
 			
 			for( name in a){
 				if(a.hasOwnProperty(name)){
-					trace("a: " + name + "=" + a[name]);
+					/*trace("a: " + name + "=" + a[name]);*/
 					_new[name] = a[name];
 				}
 			}
 			for( name in b){
 				if(b.hasOwnProperty(name)){
-					trace("b: " + name + "=" + b[name]);
+					/*trace("b: " + name + "=" + b[name]);*/
 					_new[name] = b[name];
 				}
 			}
 			
-			for(name in _new)
+			/*for(name in _new)
 			{
 				trace("new: " + name + "=" + _new[name]);
-			}
+			}*/
 			return _new;
 		}
 		
 		private function create_context(_context:*):*
 		{
 			var aval:String;
-			trace("create_context()");
-			for(aval in _context)
+			/*trace("create_context()");*/
+			/*for(aval in _context)
 			{
 				trace("-- " + aval + ": " + _context[aval]);
-			}
+			}*/
 			if(is_object(_context)){
 				return _context;
 			} else if(pragmas["IMPLICIT-ITERATOR"]){
@@ -308,11 +308,11 @@
 		}
 		
 		private function map(array:Array, fn:Function):Array {
-			trace("map()")
+			/*trace("map()")*/
 			if(array.map is Function) {
-				trace("array.map(fn)");
+				/*trace("array.map(fn)");*/
 				var ret:Array = array.map(fn);
-				trace(ret);
+				/*trace(ret);*/
 				return ret;
 			} else {
 				var val:*;
